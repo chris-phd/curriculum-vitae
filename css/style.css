@@ -314,11 +314,16 @@ li::marker {
 
 @media (max-width: 420px) {
     .profile-header {
-        display: block;
+        gap: 14px;
     }
 
     .profile-photo {
-        margin-bottom: 18px;
+        width: 82px;
+        height: 82px;
+    }
+
+    h1 {
+        font-size: 2.05rem;
     }
 }
 
