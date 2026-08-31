@@ -1,103 +1,394 @@
-/* Mobile flexbox settings */
-main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+:root {
+    --colour-page: #ffffff;
+    --colour-surface: #ffffff;
+    --colour-text: #242424;
+    --colour-heading: #111111;
+    --colour-muted: #5c5c5c;
+    --colour-accent: #303030;
+    --colour-accent-soft: #dddddd;
+    --colour-rule: #d6d6d6;
 }
 
-div {
-    flex-basis: 100%;
-    /*height: 100px;*/
-    /*margin-bottom: 0.5rem;*/
-}
-
-/* Desktop flexbox settings */
-@media (min-width: 600px) {
-    main {
-        flex-wrap: nowrap;
-    }
-
-    .main-content {
-        flex-basis: 50%;
-    }
-
-    .margin-left {
-        flex-basis: 25%;
-    }
-
-    .margin-right {
-        flex-basis: 35%;
-    }
-}
-
-a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: baseline;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 html {
-    --color-text: #0a0c10;
-    --color-primary: #4433ff;
-    --color-secondary: #2c0b8e;
-    --color-grey: #262d40;
-    --color-grey-light: #6c7693;
-    --color-grey-fade: #fbf7f3;
-    --color-blue-light: #bfdef2;
-}
-
-html {
-    font-family: PT Sans,sans-serif;
-    font-weight: 400;
-    font-style: normal;
     font-size: 16px;
-    color: var(--color-text);
 }
 
 body {
+    margin: 0;
+    background: var(--colour-page);
+    color: var(--colour-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--color-grey);
-    font-weight: 700;
-    margin-top: 12px;
+.cv {
+    width: min(840px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 64px 48px 80px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 22px;
+}
+
+.profile-photo {
+    flex: 0 0 auto;
+    width: 132px;
+    height: 132px;
+    object-fit: cover;
+    object-position: 50% 35%;
+    border-radius: 50%;
+}
+
+.profile-introduction {
+    min-width: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
 }
 
 h1 {
-    font-size: 36px;
-    margin-bottom: 12px;
+    margin-bottom: 2px;
+    color: var(--colour-heading);
+    font-size: clamp(2.4rem, 7vw, 3.25rem);
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    line-height: 1.05;
 }
 
-h2 {
-    font-size: 32px;
-    margin-top; 18px;
-    margin-bottom: 12px;
+.professional-title {
+    margin-bottom: 13px;
+    color: var(--colour-muted);
+    font-size: 1.04rem;
 }
 
-h3 {
-    margin-top; 18px;
-    font-size: 24px;
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px 13px;
+    color: var(--colour-muted);
+    font-size: 0.84rem;
 }
 
-h4 {
-    font-size: 18px;
+a {
+    color: var(--colour-accent);
+    font-weight: 650;
+    text-decoration-color: #aaaaaa;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
-ul, li {
-    margin-left: 10px;
+a:hover,
+a:focus-visible {
+    color: var(--colour-heading);
+    text-decoration-color: currentColor;
 }
 
-.paragraph {
-    margin-bottom: 12px;
+a:focus-visible {
+    border-radius: 2px;
+    outline: 3px solid var(--colour-accent-soft);
+    outline-offset: 3px;
 }
 
-.cover-photo-box {
-    background-image: url('../images/cover_photo.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 100%;
-    height: 0;
-    padding-bottom: 36.67%;
+.cv-section {
+    margin-top: 38px;
+}
+
+.cv-section > h2 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    color: var(--colour-heading);
+    font-size: 1.05rem;
+    font-weight: 750;
+    line-height: 1.3;
+}
+
+.cv-section > h2::after {
+    height: 1px;
+    flex: 1;
+    background: var(--colour-rule);
+    content: "";
+}
+
+.profile-summary {
+    max-width: 68ch;
+    margin-bottom: 0;
+    font-size: 1.03rem;
+}
+
+.entry {
+    margin-bottom: 27px;
+    break-inside: avoid;
+}
+
+.entry:last-child {
+    margin-bottom: 0;
+}
+
+.entry-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 8px;
+}
+
+.entry-heading > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.45em;
+}
+
+.entry h3,
+.skill-group h3,
+.award-group h3 {
+    margin-bottom: 1px;
+    color: var(--colour-heading);
+    font-size: 1.03rem;
+    font-weight: 730;
+    line-height: 1.35;
+}
+
+.organisation {
+    margin-bottom: 0;
+    color: var(--colour-text);
+    font-size: 0.98rem;
+    font-weight: 650;
+}
+
+.organisation::before {
+    margin-right: 0.45em;
+    content: "·";
+}
+
+.date-range {
+    flex: 0 0 auto;
+    color: var(--colour-muted);
+    font-size: 0.82rem;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+ul {
+    margin: 0;
+    padding-left: 1.15rem;
+}
+
+li {
+    margin-bottom: 5px;
+    padding-left: 4px;
+}
+
+li:last-child {
+    margin-bottom: 0;
+}
+
+li::marker {
+    color: var(--colour-accent);
+}
+
+.compact-entry {
+    margin-bottom: 27px;
+}
+
+.compact-entry .entry-heading {
+    margin-bottom: 8px;
+}
+
+.compact-entry > p {
+    margin-bottom: 0;
+    color: var(--colour-text);
+    font-size: 1rem;
+}
+
+.skills-grid,
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 28px;
+}
+
+.skill-group {
+    padding-left: 14px;
+    border-left: 2px solid var(--colour-accent-soft);
+    break-inside: avoid;
+}
+
+.skill-group p {
+    margin: 4px 0 0;
+    color: var(--colour-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.award-group {
+    break-inside: avoid;
+}
+
+.award-group h3 {
+    margin-bottom: 9px;
+}
+
+.award-group ul {
+    color: var(--colour-muted);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+    body {
+        background: var(--colour-surface);
+    }
+
+    .cv {
+        width: 100%;
+        margin: 0;
+        padding: 32px 22px 46px;
+    }
+
+    .profile-header {
+        align-items: flex-start;
+        gap: 18px;
+        padding-bottom: 28px;
+    }
+
+    .profile-photo {
+        width: 96px;
+        height: 96px;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    .professional-title {
+        font-size: 0.92rem;
+        line-height: 1.4;
+    }
+
+    .contact-links {
+        gap: 4px 11px;
+    }
+
+    .contact-email {
+        flex-basis: 100%;
+    }
+
+    .cv-section {
+        margin-top: 32px;
+    }
+
+    .entry-heading {
+        display: block;
+    }
+
+    .date-range {
+        display: block;
+        margin-top: 4px;
+    }
+
+    .skills-grid,
+    .awards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 420px) {
+    .profile-header {
+        display: block;
+    }
+
+    .profile-photo {
+        margin-bottom: 18px;
+    }
+}
+
+@media print {
+    @page {
+        margin: 14mm 16mm;
+    }
+
+    :root {
+        --colour-surface: #ffffff;
+        --colour-text: #1d2526;
+        --colour-muted: #455154;
+    }
+
+    html {
+        font-size: 10.5pt;
+    }
+
+    body {
+        background: #ffffff;
+    }
+
+    .cv {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border-top: 0;
+        box-shadow: none;
+    }
+
+    .profile-header {
+        padding-bottom: 20px;
+    }
+
+    .profile-photo {
+        display: none;
+    }
+
+    h1 {
+        font-size: 27pt;
+    }
+
+    .cv-section {
+        margin-top: 24px;
+    }
+
+    .cv-section > h2 {
+        margin-bottom: 13px;
+    }
+
+    .entry {
+        margin-bottom: 17px;
+    }
+
+    .skills-grid,
+    .awards-grid {
+        gap: 13px 22px;
+    }
+
+    a {
+        color: var(--colour-text);
+        text-decoration: none;
+    }
+
+    .profile-header,
+    .cv-section > h2,
+    .entry,
+    .skill-group,
+    .award-group {
+        break-inside: avoid;
+    }
 }
